@@ -18,10 +18,10 @@ export const Filter: React.FC<FiltersProps> = ({ value, onChange }) => {
     <nav className="filter" data-cy="Filter">
       <a
         href="#/"
-        className={cn('filter__link', { selected: value === Filters.all })}
+        className={cn('filter__link', { selected: value === Filters.All })}
         data-cy="FilterLinkAll"
         onClick={() => {
-          handleChangeFilter(Filters.all);
+          handleChangeFilter(Filters.All);
         }}
       >
         All
@@ -29,10 +29,10 @@ export const Filter: React.FC<FiltersProps> = ({ value, onChange }) => {
 
       <a
         href="#/active"
-        className={cn('filter__link', { selected: value === Filters.active })}
+        className={cn('filter__link', { selected: value === Filters.Active })}
         data-cy="FilterLinkActive"
         onClick={() => {
-          handleChangeFilter(Filters.active);
+          handleChangeFilter(Filters.Active);
         }}
       >
         Active
@@ -41,11 +41,11 @@ export const Filter: React.FC<FiltersProps> = ({ value, onChange }) => {
       <a
         href="#/completed"
         className={cn('filter__link', {
-          selected: value === Filters.completed,
+          selected: value === Filters.Completed,
         })}
         data-cy="FilterLinkCompleted"
         onClick={() => {
-          handleChangeFilter(Filters.completed);
+          handleChangeFilter(Filters.Completed);
         }}
       >
         Completed

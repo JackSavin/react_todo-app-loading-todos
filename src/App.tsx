@@ -15,7 +15,7 @@ export const App: React.FC = () => {
   const [todos, setTodos] = useState<Todo[]>([]);
   const [isLoading, setIsLoading] = useState(false);
   const [errorMessage, setErrorMessage] = useState('');
-  const [filter, setFilter] = useState<Filters>(Filters.all);
+  const [filter, setFilter] = useState<Filters>(Filters.All);
 
   const hideError = () => {
     setErrorMessage('');
@@ -36,7 +36,7 @@ export const App: React.FC = () => {
     setIsLoading(true);
     getTodos()
       .then(todosFromServer => setTodos(todosFromServer))
-      .catch(() => setErrorMessage(ErrorText.load))
+      .catch(() => setErrorMessage(ErrorText.Load))
       .finally(() => setIsLoading(false));
   }, []);
 
@@ -50,11 +50,11 @@ export const App: React.FC = () => {
 
   const filteredTodos = useMemo(() => {
     switch (filter) {
-      case Filters.active:
+      case Filters.Active:
         return todos.filter(t => !t.completed);
-      case Filters.completed:
+      case Filters.Completed:
         return todos.filter(t => t.completed);
-      case Filters.all:
+      case Filters.All:
         return todos;
     }
   }, [todos, filter]);
@@ -69,7 +69,6 @@ export const App: React.FC = () => {
 
       <div className="todoapp__content">
         <header className="todoapp__header">
-          {/* this button should have `active` class only if all todos are completed */}
           <button
             type="button"
             className={cn('todoapp__toggle-all', { active: allCompleted })}
@@ -77,7 +76,6 @@ export const App: React.FC = () => {
             disabled={!hasTodos}
           />
 
-          {/* Add a todo on form submit */}
           <form>
             <input
               data-cy="NewTodoField"
@@ -95,7 +93,6 @@ export const App: React.FC = () => {
               {itemsLeft} items left
             </span>
             <Filter value={filter} onChange={setFilter} />
-            {/* this button should be disabled if there are no completed todos */}
             <button
               type="button"
               className="todoapp__clear-completed"
